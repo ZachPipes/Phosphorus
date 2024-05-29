@@ -35,84 +35,27 @@ TokenType getTokenType(const std::string& lexeme) {
 	for (char c : lexeme) {
 		//If index[0] is NOT alphanumeric AND is NOT an underscore
 		if (!std::isalnum(c) && c != '_') {
-			//Sets both bool variables to false and breaks
+			//Sets both bool variables to false and breaksthe for loop
 			isIdentifier = false;
 			isLiteral = false;
 			break;
 		}
 	}
 
-	//If isIdentifier variable is still true (from previous for loop)
+	//If isIdentifier is still true (from previous for loop)
 	if (isIdentifier) {
-		//If 
+		//If the lexeme is in the keywords set return keyword
 		if (keywords.count(lexeme)) {
 			return KEYWORD;
 		}
+		//If it's not in the keywords set, return identifier
 		else { return IDENTIFIER; }
 	}
+	//If isLiteral is still true (from previous for loop)
 	else if (isLiteral) {
+		//Return literal
 		return LITERAL;
 	}
+	//If it's anything else it's punctuation
 	else { return PUNCTUATION; }
-}
-
-int main() {
-	std::string input;
-	std::cout << "Enter input: ";
-	std::getline(std::cin, input);
-
-	std::string lexeme;
-	for (char c : input) {
-		if (std::isalnum(c) || c == '_') {
-			lexeme += c;
-		}
-		else {
-			if (!lexeme.empty()) {
-				TokenType tokenType = getTokenType(lexeme);
-				std::cout << "Lexeme: " << lexeme << ", Token Type: ";
-				switch (tokenType) {
-				case IDENTIFIER:
-					std::cout << "IDENTIFIER" << std::endl;
-					break;
-				case KEYWORD:
-					std::cout << "KEYWORD" << std::endl;
-					break;
-				case LITERAL:
-					std::cout << "LITERAL" << std::endl;
-					break;
-				case OPERATOR:
-					std::cout << "OPERATOR" << std::endl;
-					break;
-				case PUNCTUATION:
-					std::cout << "PUNCTUATION" << std::endl;
-					break;
-				}
-				lexeme.clear();
-			}
-			if (!std::isspace(c)) {
-				std::cout << "Lexeme: " << c << ", Token Type: Operator/Punctuation" << std::endl;
-			}
-		}
-	}
-
-	if (!lexeme.empty()) {
-		TokenType tokenType = getTokenType(lexeme);
-		std::cout << "Lexeme: " << lexeme << ", Token Type: ";
-		switch (tokenType) {
-		case IDENTIFIER:
-			std::cout << "Identifier" << std::endl;
-			break;
-		case KEYWORD:
-			std::cout << "Keyword" << std::endl;
-			break;
-		case LITERAL:
-			std::cout << "Literal" << std::endl;
-			break;
-		case OPERATOR:
-			std::cout << "Operator/Punctuation" << std::endl;
-			break;
-		}
-	}
-
-	return 0;
 }
