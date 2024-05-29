@@ -1,0 +1,3 @@
+int firstdig = 6;
+int seconddig = 6;
+return firstdig + seconddig;

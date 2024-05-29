@@ -1,0 +1,8 @@
+Recognizes the following:
+- Keywords:    if|else
+- Identifiers: Var/fun names 
+- Literals:    nums/strings
+- Operators:   +/0/*//
+- Punctuation: ;/(/)
+- Whitespace:  spaces/tabs/newlines
+- Comments:    single/multi-line comments
