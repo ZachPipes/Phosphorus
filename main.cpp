@@ -28,7 +28,8 @@ int main() {
 		else {
 			if (!lexeme.empty()) {
 				TokenType tokenType = getTokenType(lexeme);
-				std::cout << "Lexeme: " << lexeme << ", Token Type: ";
+				std::cout << "Lexeme: " << lexeme << " \n- Token Type: ";
+				//Switch statement that determines the output based on the tokenType
 				switch (tokenType) {
 				case IDENTIFIER:
 					std::cout << "IDENTIFIER" << std::endl;
@@ -47,7 +48,7 @@ int main() {
 				}
 			}
 			if (!std::isspace(c)) {
-				std::cout << "Lexeme: " << c << ", Token Type: Punctuation" << std::endl;
+				std::cout << "Lexeme: " << c << " \n- Token Type: Punctuation" << std::endl;
 			}
 		}
 	}
