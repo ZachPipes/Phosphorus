@@ -10,11 +10,12 @@ extern std::unordered_set<std::string> keywords;
 int main() {
 	//Interactions with user
 	std::string input;
-	std::cout << "Enter file name: ";
+	std::cout << "Enter file name(or input): ";
 	std::getline(std::cin, input);
-	std::ifstream inputFileStream(input);
+
+	/*std::ifstream inputFileStream(input);
 	//Verifying file
-	/*if (!inputFileStream) {
+	if (!inputFileStream) {
 		std::cerr << "Error opnening file\n";
 		return 1;
 	}*/
@@ -50,6 +51,7 @@ int main() {
 			if (!std::isspace(c)) {
 				std::cout << "Lexeme: " << c << " \n- Token Type: Punctuation" << std::endl;
 			}
+			lexeme.clear();
 		}
 	}
 

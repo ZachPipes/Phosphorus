@@ -5,7 +5,7 @@
 //Keywords
 std::unordered_set<std::string> keywords = {
 	"if", "else", "while",
-	"int", "double", "string"
+	"bool", "int", "double", "string"
 };
 
 TokenType getTokenType(const std::string& lexeme) {
