@@ -5,6 +5,8 @@
 #include "preprocessor.h"
 #include "lexer.h"
 
+extern std::unordered_set<std::string> keywords;
+
 int main() {
 	//Interactions with user
 	std::string input;
@@ -12,20 +14,14 @@ int main() {
 	std::getline(std::cin, input);
 	std::ifstream inputFileStream(input);
 	//Verifying file
-	if (!inputFileStream) {
+	/*if (!inputFileStream) {
 		std::cerr << "Error opnening file\n";
 		return 1;
-	}
-
-}
-
-int main() {
-	std::string input;
-	std::cout << "Enter input: ";
-	std::getline(std::cin, input);
+	}*/
 
 	std::string lexeme;
 	for (char c : input) {
+		//Detects when the lexeme ends 
 		if (std::isalnum(c) || c == '_') {
 			lexeme += c;
 		}
@@ -47,33 +43,12 @@ int main() {
 					std::cout << "OPERATOR" << std::endl;
 					break;
 				case PUNCTUATION:
-					std::cout << "PUNCTUATION" << std::endl;
-					break;
+					std::cout << "PUCNTUATION" << std::endl;
 				}
-				lexeme.clear();
 			}
 			if (!std::isspace(c)) {
-				std::cout << "Lexeme: " << c << ", Token Type: Operator/Punctuation" << std::endl;
+				std::cout << "Lexeme: " << c << ", Token Type: Punctuation" << std::endl;
 			}
-		}
-	}
-
-	if (!lexeme.empty()) {
-		TokenType tokenType = getTokenType(lexeme);
-		std::cout << "Lexeme: " << lexeme << ", Token Type: ";
-		switch (tokenType) {
-		case IDENTIFIER:
-			std::cout << "Identifier" << std::endl;
-			break;
-		case KEYWORD:
-			std::cout << "Keyword" << std::endl;
-			break;
-		case LITERAL:
-			std::cout << "Literal" << std::endl;
-			break;
-		case OPERATOR:
-			std::cout << "Operator/Punctuation" << std::endl;
-			break;
 		}
 	}
 

@@ -1,23 +1,11 @@
 #include <iostream>
 #include <string>
-#include <cctype>
-#include <vector>
-#include <unordered_set>
+#include "lexer.h"
 
 //Keywords
 std::unordered_set<std::string> keywords = {
-	"if", "else", "while", 
+	"if", "else", "while",
 	"int", "double", "string"
-};
-
-enum TokenType {
-	KEYWORD,
-	IDENTIFIER,
-	LITERAL,
-	OPERATOR,
-	PUNCTUATION,
-	COMMENT,
-	UNKNOWN
 };
 
 TokenType getTokenType(const std::string& lexeme) {
